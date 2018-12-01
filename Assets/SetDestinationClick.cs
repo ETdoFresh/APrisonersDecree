@@ -1,31 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-public class SetDestinationClick : MonoBehaviour
+public class SetDestinationClick : MonoBehaviour, IPointerClickHandler
 {
-    private NavMeshAgent navMeshAgent;
-
-    private void Awake()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        foreach(var unit in FindObjectsOfType<PlayerUnit>())
+            MoveToMouse(unit, eventData);
     }
 
-    void Update()
+    private void MoveToMouse(PlayerUnit unit, PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-            MoveToMouse();
-    }
+        if (unit.isBusy) return;
 
-    private void MoveToMouse()
-    {
-        RaycastHit hit;
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            var path = new NavMeshPath();
-            navMeshAgent.CalculatePath(hit.point, path);
-            if (path.status != NavMeshPathStatus.PathPartial)
-                navMeshAgent.SetDestination(hit.point);
-        }
+        var navMeshAgent = unit.GetComponent<NavMeshAgent>();
+        if (!navMeshAgent) return;
+
+        var worldPosition = eventData.pointerCurrentRaycast.worldPosition;
+        var path = new NavMeshPath();
+        navMeshAgent.CalculatePath(worldPosition, path);
+        if (path.status == NavMeshPathStatus.PathComplete)
+            navMeshAgent.SetDestination(worldPosition);
     }
 }
