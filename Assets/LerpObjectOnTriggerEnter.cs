@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LerpObjectOnTriggerEnter : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class LerpObjectOnTriggerEnter : MonoBehaviour
     public Vector3 closedPosition;
     public Vector3 openedPosition;
     public Vector3 targetPosition;
+    public List<Transform> contains = new List<Transform>();
 
     private void Awake()
     {
@@ -14,11 +16,15 @@ public class LerpObjectOnTriggerEnter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        targetPosition = openedPosition;
+        contains.Add(other.transform);
+        if (contains.Count >= 0)
+            targetPosition = openedPosition;
     }
     private void OnTriggerExit(Collider other)
     {
-        targetPosition = closedPosition;
+        contains.Remove(other.transform);
+        if (contains.Count == 0)
+            targetPosition = closedPosition;
     }
 
     private void Update()

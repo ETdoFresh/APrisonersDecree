@@ -21,6 +21,11 @@ public class SetDestinationClick : MonoBehaviour
         RaycastHit hit;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
-            navMeshAgent.SetDestination(hit.point);
+        {
+            var path = new NavMeshPath();
+            navMeshAgent.CalculatePath(hit.point, path);
+            if (path.status != NavMeshPathStatus.PathPartial)
+                navMeshAgent.SetDestination(hit.point);
+        }
     }
 }

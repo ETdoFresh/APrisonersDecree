@@ -32,7 +32,7 @@ public class DestroyTimer : MonoBehaviour
         IEnumerable<PlayerUnit> units = FindObjectsOfType<PlayerUnit>();
         foreach (var playerUnit in units)
             if (!safeZone.bounds.Intersects(playerUnit.GetComponent<Collider>().bounds))
-                Destroy(playerUnit.gameObject);
+                playerUnit.Die();
 
         enabled = false;
 
