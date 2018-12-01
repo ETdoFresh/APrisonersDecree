@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1055,6 +1055,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 670527340}
+  - component: {fileID: 670527341}
   m_Layer: 5
   m_Name: Path2Options
   m_TagString: Untagged
@@ -1083,6 +1084,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &670527341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670527339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e244c5287ee0346863e325f407df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1618205957}
+  numberOfUnitsText: {fileID: 1982107452}
 --- !u!1 &746247800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1827,6 @@ GameObject:
   - component: {fileID: 1041985406}
   - component: {fileID: 1041985405}
   - component: {fileID: 1041985404}
-  - component: {fileID: 1041985407}
   m_Layer: 5
   m_Name: ActionButton
   m_TagString: Untagged
@@ -1879,7 +1892,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1041985407}
+      - m_Target: {fileID: 1479280531}
         m_MethodName: MovePlayerUnit
         m_Mode: 1
         m_Arguments:
@@ -1892,6 +1905,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1306764364}
         m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670527341}
+        m_MethodName: MovePlayerUnit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1936,19 +1960,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041985402}
---- !u!114 &1041985407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1041985402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e244c5287ee0346863e325f407df1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 421822939}
-  numberOfUnitsText: {fileID: 635150016}
 --- !u!1 &1047083001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,7 +2584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d456eada5b15184b97eb2c5414bde6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 8
+  timer: 3
   timerText: {fileID: 1306764362}
   endOfLevelPanel: {fileID: 313646176}
   endOfLevelText: {fileID: 667444381}
@@ -2683,6 +2694,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1479280530}
+  - component: {fileID: 1479280531}
   m_Layer: 5
   m_Name: Path1Options
   m_TagString: Untagged
@@ -2711,6 +2723,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1479280531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479280529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e244c5287ee0346863e325f407df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 421822939}
+  numberOfUnitsText: {fileID: 635150016}
 --- !u!1 &1496720278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,7 +3142,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1618205956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.66, y: 0, z: -5.45}
+  m_LocalPosition: {x: -7.3, y: 0, z: -5.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 773101661}
