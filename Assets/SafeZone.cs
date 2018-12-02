@@ -1,16 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SafeZone : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class SafeZone : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        var unit = other.GetComponent<PlayerUnit>();
+        if (unit) FindObjectOfType<GameManager>().safe.Add(unit);
+    }
 }
