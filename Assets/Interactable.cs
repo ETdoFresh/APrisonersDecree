@@ -1,12 +1,33 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Interactable : MonoBehaviour, IPointerClickHandler
+public class Interactable : MonoBehaviour//, IPointerClickHandler
 {
-    public void OnPointerClick(PointerEventData eventData)
+    public UnityEventGameObject onPlayerUnitTriggerEnter;
+    public UnityEventGameObject onAllPlayerUnitsTriggerExit;
+    public List<Collider> triggerers = new List<Collider>();
+
+    private void OnTriggerEnter(Collider other)
     {
-        MoveClosestPlayerUnit(eventData);
+        if (other.GetComponent<PlayerUnit>())
+        {
+            onPlayerUnitTriggerEnter.Invoke(other.gameObject);
+            triggerers.Add(other);
+        }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        triggerers.Remove(other);
+        if (triggerers.Count == 0)
+            onAllPlayerUnitsTriggerExit.Invoke(other.gameObject);
+    }
+
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    MoveClosestPlayerUnit(eventData);
+    //}
 
     private void MoveClosestPlayerUnit(PointerEventData eventData)
     {

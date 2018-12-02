@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void PreviousLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
     public void Add(PlayerUnit playerUnit) { all.Add(playerUnit); }
 
     public void Remove(PlayerUnit playerUnit)
