@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-public class PlayerUnit : MonoBehaviour
+public class PlayerUnit : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public NavMeshAgent navMeshAgent;
     public Animator animator;
     public bool isBusy = false;
     public bool hasMoved = false;
+    public PlayerUnit dragged;
 
     private void Awake()
     {
@@ -39,5 +41,25 @@ public class PlayerUnit : MonoBehaviour
         animator.SetBool("IsDead", true);
         Destroy(this);
         Destroy(navMeshAgent);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (!dragged) return;
+        dragged = null;
+
+        var destination = eventData.pointerCurrentRaycast.worldPosition;
+        if (CanReach(destination))
+            SetDestination(destination);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        dragged = this;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        
     }
 }
