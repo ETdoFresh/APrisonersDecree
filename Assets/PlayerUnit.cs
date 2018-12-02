@@ -41,6 +41,7 @@ public class PlayerUnit : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         animator.SetBool("IsDead", true);
         Destroy(this);
         Destroy(navMeshAgent);
+        Destroy(GetComponent<Collider>());
     }
 
     public void OnEndDrag(PointerEventData eventData)
