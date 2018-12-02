@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class PlayerUnit : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
+    public Animator animator;
     public bool isBusy = false;
     public bool hasMoved = false;
 
@@ -11,6 +12,12 @@ public class PlayerUnit : MonoBehaviour
     {
         FindObjectOfType<GameManager>().Add(this);
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("Velocity", navMeshAgent.velocity.magnitude);
     }
 
     public void SetDestination(Vector3 target)
@@ -28,6 +35,9 @@ public class PlayerUnit : MonoBehaviour
     public void Die()
     {
         FindObjectOfType<GameManager>().Remove(this);
-        Destroy(gameObject);
+        animator.SetTrigger("Die");
+        animator.SetBool("IsDead", true);
+        Destroy(this);
+        Destroy(navMeshAgent);
     }
 }
