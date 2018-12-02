@@ -9,7 +9,7 @@ public class PlayerUnit : MonoBehaviour
 
     private void Awake()
     {
-        FindObjectOfType<GameManager>().all.Add(this);
+        FindObjectOfType<GameManager>().Add(this);
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -27,6 +27,7 @@ public class PlayerUnit : MonoBehaviour
 
     public void Die()
     {
+        FindObjectOfType<GameManager>().Remove(this);
         Destroy(gameObject);
     }
 }

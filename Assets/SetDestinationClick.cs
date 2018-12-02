@@ -6,7 +6,7 @@ public class SetDestinationClick : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        foreach(var unit in FindObjectsOfType<PlayerUnit>())
+        foreach (var unit in FindObjectsOfType<PlayerUnit>())
             MoveToMouse(unit, eventData);
     }
 
