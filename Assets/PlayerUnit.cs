@@ -36,6 +36,7 @@ public class PlayerUnit : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void Die()
     {
+        UnitTracker.Remove(1);
         FindObjectOfType<GameManager>().Remove(this);
         animator.SetTrigger("Die");
         animator.SetBool("IsDead", true);

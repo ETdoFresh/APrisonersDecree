@@ -259,11 +259,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1100151495}
   m_Script: {fileID: 11500000, guid: 0f25088132ffe5f4d8b78ef3ad2b849d, type: 3}
---- !u!1 &313646176 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1058278915793160, guid: f1ed057564b761847bd14bb9459f107f,
-    type: 2}
-  m_PrefabInternal: {fileID: 702019634}
 --- !u!1 &328515793
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,9 +706,34 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282840815}
+    - target: {fileID: 114920044316841820, guid: f1ed057564b761847bd14bb9459f107f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920044316841820, guid: f1ed057564b761847bd14bb9459f107f,
+        type: 2}
+      propertyPath: timer
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1ed057564b761847bd14bb9459f107f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &702019635 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1160378166640270, guid: f1ed057564b761847bd14bb9459f107f,
+    type: 2}
+  m_PrefabInternal: {fileID: 702019634}
+--- !u!1 &702019636 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1983310466644596, guid: f1ed057564b761847bd14bb9459f107f,
+    type: 2}
+  m_PrefabInternal: {fileID: 702019634}
+--- !u!1 &702019637 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1760625497222118, guid: f1ed057564b761847bd14bb9459f107f,
+    type: 2}
+  m_PrefabInternal: {fileID: 702019634}
 --- !u!1001 &742501048
 Prefab:
   m_ObjectHideFlags: 0
@@ -940,11 +960,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114553571631503896, guid: 93a3c9e7045b369439f59fcc87712064,
         type: 2}
-      propertyPath: endOfLevelPanel
-      value: 
-      objectReference: {fileID: 313646176}
-    - target: {fileID: 114553571631503896, guid: 93a3c9e7045b369439f59fcc87712064,
-        type: 2}
       propertyPath: endOfLevelText
       value: 
       objectReference: {fileID: 667444381}
@@ -953,6 +968,21 @@ Prefab:
       propertyPath: orthographic size
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114553571631503896, guid: 93a3c9e7045b369439f59fcc87712064,
+        type: 2}
+      propertyPath: endOfLevelPanel
+      value: 
+      objectReference: {fileID: 702019635}
+    - target: {fileID: 114553571631503896, guid: 93a3c9e7045b369439f59fcc87712064,
+        type: 2}
+      propertyPath: settingsButton
+      value: 
+      objectReference: {fileID: 702019636}
+    - target: {fileID: 114553571631503896, guid: 93a3c9e7045b369439f59fcc87712064,
+        type: 2}
+      propertyPath: loseLevelPanel
+      value: 
+      objectReference: {fileID: 702019637}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93a3c9e7045b369439f59fcc87712064, type: 2}
   m_IsPrefabParent: 0

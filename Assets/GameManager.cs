@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject settingsButton;
+    public GameObject loseLevelPanel;
     public GameObject endOfLevelPanel;
     public Text endOfLevelText;
     public List<PlayerUnit> all;
@@ -34,7 +36,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    public void Add(PlayerUnit playerUnit) { all.Add(playerUnit); }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Add(PlayerUnit playerUnit)
+    {
+        if (all.Count < UnitTracker.Units)
+            all.Add(playerUnit);
+        else
+            Destroy(playerUnit.gameObject);
+    }
 
     public void Remove(PlayerUnit playerUnit)
     {
@@ -53,7 +66,10 @@ public class GameManager : MonoBehaviour
     {
         if (safe.Count == all.Count)
         {
-            endOfLevelPanel.SetActive(true);
+            if (safe.Count == 0) loseLevelPanel.SetActive(true);
+            else endOfLevelPanel.SetActive(true);
+
+            settingsButton.SetActive(false);
             endOfLevelText.text = string.Format("Congrats, you saved: {0} units!", safe.Count);
         }
     }
